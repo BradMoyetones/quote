@@ -11,7 +11,7 @@ import "@/styles/globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
+    default: siteConfig.description+ " - "+siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
@@ -87,7 +87,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)] theme-container",
+          "text-foreground group/body overscroll-none antialiased theme-container",
           fontVariables
         )}
       >

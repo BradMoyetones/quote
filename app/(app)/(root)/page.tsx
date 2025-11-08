@@ -1,9 +1,6 @@
 'use client'
-import { AppHeader } from "@/components/app-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Metadata } from "next";
-import { Header } from "./components/animated-header";
-import { HeroSection } from "./components/hero-section";
+import { Header } from "./components/header-animated";
 import { FeaturesSection } from "./components/features-section";
 import { HowItWorksSection } from "./components/how-it-works-section";
 import { PreviewSection } from "./components/preview-section";
@@ -11,6 +8,18 @@ import { BenefitsSection } from "./components/benefits-section";
 import { CTASection } from "./components/cta-section";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Hero } from "./components/hero-animated";
+import { motion } from 'motion/react';
+
+const CONTENT_VARIANTS = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { type: 'spring', stiffness: 100, damping: 30 },
+  },
+} as const;
 
 export default function Home() {
    const [transition, setTransition] = useState(false);
@@ -28,13 +37,27 @@ export default function Home() {
   return (
     <main className={cn('relative h-dvh', !isLoaded && 'overflow-y-hidden')}>
       <Header transition={transition} />
-      <HeroSection />
-      <FeaturesSection />
-      <HowItWorksSection />
-      <PreviewSection />
-      <BenefitsSection />
-      <CTASection />
-      <SiteFooter />
+      {transition && (
+        <>
+          <div>
+            <motion.div
+              variants={CONTENT_VARIANTS}
+              initial="hidden"
+              animate={transition ? 'visible' : 'hidden'}
+              className="w-full"
+            >
+              <Hero key={String(transition)} />
+            </motion.div>
+          </div>
+
+          <FeaturesSection />
+          <HowItWorksSection />
+          <PreviewSection />
+          <BenefitsSection />
+          <CTASection />
+          <SiteFooter />
+        </>
+      )}
     </main>
   );
 }

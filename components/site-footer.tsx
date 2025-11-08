@@ -5,7 +5,7 @@ export function SiteFooter() {
   return (
     <footer className="group-has-[.section-soft]/body:bg-surface/40 3xl:fixed:bg-transparent group-has-[.docs-nav]/body:pb-20 group-has-[.docs-nav]/body:sm:pb-0 dark:bg-transparent border-t border-border/50 mt-12">
       <div className="container mx-auto px-4 xl:px-6">
-        <div className="py-6 space-y-4">
+        <div className="py-4 space-y-4">
           {/* Información principal - centrado */}
           <div className="text-muted-foreground text-center text-xs sm:text-sm">
             Construido por{" "}
@@ -48,7 +48,7 @@ export function SiteFooter() {
 
             {/* Esquina derecha - Copyright */}
             <div className="text-center sm:text-right">
-              <p>© {new Date().getFullYear()} Envío Dashboard. Todos los derechos reservados.</p>
+              <p>© {new Date().getFullYear()} Quote. Casi todos los derechos reservados.</p>
             </div>
           </div>
         </div>

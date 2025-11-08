@@ -1,6 +1,6 @@
 {
   "name": "quote",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -51,6 +51,7 @@
     "react-dom": "19.2.0",
     "react-hook-form": "^7.66.0",
     "react-resizable-panels": "^3.0.6",
+    "react-use-measure": "^2.1.7",
     "recharts": "^2.15.4",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",

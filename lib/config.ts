@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Quote",
   url: "https://quote.itsbrad.dev",
-  ogImage: "https://quote.itsbrad.dev/icon.png",
+  ogImage: "https://quote.itsbrad.dev/Delta-Quote.svg",
   description: "Plataforma moderna para crear y organizar tus cotizaciones.",
   links: {
     twitter: "https://twitter.com/BradMoyetones",
