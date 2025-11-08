@@ -11,7 +11,7 @@ import TailwindIcon from '@/components/icons/tailwind-icon';
 import MotionIcon from '@/components/icons/motion-icon';
 import ShadcnIcon from '@/components/icons/shadcn-icon';
 import { ArrowRightIcon } from '@/components/animate-ui/icons/arrow-right';
-import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
+import { AnimatedBackground } from '@/components/ui/animated-background';
 
 const ICONS = [ReactIcon, TSIcon, TailwindIcon, MotionIcon, ShadcnIcon];
 const TITLE = 'Cotizaciones profesionales en minutos';
@@ -19,7 +19,7 @@ const TITLE = 'Cotizaciones profesionales en minutos';
 export const Hero = () => {
     return (
         <div className="relative overflow-x-hidden flex flex-col items-center px-5 bg-linear-to-b from-background via-background to-muted/20">
-            <GravityStarsBackground className="absolute inset-0 flex items-center justify-center rounded-xl" />
+            <AnimatedBackground circleCount={5} circleOpacity={0.11} />
             <div className="relative min-h-screen z-10 flex flex-col items-center justify-center">
                 <MotionEffect
                     slide={{
@@ -110,7 +110,7 @@ export const Hero = () => {
                                     variant="default"
                                     asChild
                                 >
-                                    <Link href="/docs/installation">
+                                    <Link href="/editor">
                                         Empezar <ArrowRightIcon className="!size-5" />
                                     </Link>
                                 </Button>

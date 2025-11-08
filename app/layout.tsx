@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 
 import "@/styles/globals.css"
+import { MotionConfig } from "motion/react"
 
 export const metadata: Metadata = {
   title: {
@@ -91,12 +92,14 @@ export default function RootLayout({
           fontVariables
         )}
       >
-        <ThemeProvider>
-          <ActiveThemeProvider>
-            {children}
-            <Toaster position="top-center" />
-          </ActiveThemeProvider>
-        </ThemeProvider>
+        <MotionConfig reducedMotion="user">
+          <ThemeProvider>
+            <ActiveThemeProvider>
+              {children}
+              <Toaster position="top-center" />
+            </ActiveThemeProvider>
+          </ThemeProvider>
+        </MotionConfig>
       </body>
     </html>
   )
