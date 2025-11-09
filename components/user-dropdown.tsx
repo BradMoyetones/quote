@@ -13,9 +13,13 @@ import { Button } from "./ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Skeleton } from "./ui/skeleton"
 import { useRouter } from "next/navigation"
+import { useIsMobile } from "@/hooks/use-mobile"
+import { cn } from "@/lib/utils"
+import { ChevronsUpDown } from "lucide-react"
 
-export default function UserDropdown() {
+export default function UserDropdown({mode = "desktop"}:{mode?: "mobile" | "desktop"}) {
     const router = useRouter()
+    const isMobile = useIsMobile()
     
     const {
         data: session,
@@ -33,10 +37,14 @@ export default function UserDropdown() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button className="rounded-full p-0.5" variant="outline">
+                <Button 
+                    className={isMobile && mode === "mobile" ? "py-6" : "rounded-full p-0.5"}
+                    variant="ghost"
+                >
                     {isPending ? (
                         <Skeleton className="rounded-full size-8 aspect-square" />
                     ) : (
+                        <>
                         <Avatar>
                             <AvatarImage
                                 src={session?.user.image || undefined}
@@ -46,6 +54,16 @@ export default function UserDropdown() {
                                 {session?.user.name?.slice(0, 2).toUpperCase()}
                             </AvatarFallback>
                         </Avatar>
+                        {isMobile && mode === "mobile" && (
+                            <>
+                                <div className="grid flex-1 text-left text-sm leading-tight">
+                                    <span className="truncate font-medium">{session?.user.name}</span>
+                                    <span className="truncate text-xs">{session?.user.email}</span>
+                                </div>
+                                <ChevronsUpDown className="ml-auto size-4" />
+                            </>
+                        )}
+                        </>
                     )}
                 </Button>
             </DropdownMenuTrigger>
