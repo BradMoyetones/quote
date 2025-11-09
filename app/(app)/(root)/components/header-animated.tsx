@@ -14,6 +14,7 @@ import {
 import { StarIcon } from "lucide-react"
 import { ModeToggle } from "@/components/mode-toggle"
 import Link from "next/link"
+import UserDropdown from "@/components/user-dropdown"
 
 const LOGO_WRAPPER_VARIANTS = {
     center: {
@@ -116,6 +117,8 @@ export const Header = ({ transition }: { transition: boolean }) => {
                     
                     <ModeToggle />
                     <ThemeSelector />
+                    <UserDropdown />
+
                 </motion.div>
             </div>
         </motion.div>
