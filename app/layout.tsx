@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     creator: "@BradMoyetones",
   },
   icons: {
-    icon: "/icon.png",
+    icon: "/Delta.png",
     shortcut: "/icon.png",
     apple: "/icon.png",
   },
