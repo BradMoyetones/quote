@@ -47,3 +47,11 @@ npm run prisma:push      # o prisma:migrate si es cambio definitivo
 ```sh
 npm run prisma:studio
 ```
+
+### Build en producción (Vercel)
+
+El script de build ejecuta automáticamente:
+
+```bash
+prisma generate && next build
+```
