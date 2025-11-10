@@ -20,7 +20,7 @@ export const Hero = () => {
     return (
         <div className="relative overflow-x-hidden flex flex-col items-center px-5 bg-linear-to-b from-background via-background to-muted/20">
             <AnimatedBackground circleCount={5} circleOpacity={0.11} />
-            <div className="relative min-h-screen z-10 flex flex-col items-center justify-center">
+            <div className="relative min-h-[calc(100vh-53px)] z-10 flex flex-col items-center justify-center">
                 <MotionEffect
                     slide={{
                         direction: 'down',

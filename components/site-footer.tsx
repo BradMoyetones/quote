@@ -33,15 +33,15 @@ export function SiteFooter() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-border/30 text-xs text-muted-foreground/70">
             {/* Esquina izquierda - Links legales */}
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-              <Link href="/terms" className="hover:text-foreground transition-colors underline-offset-4 hover:underline">
+              <Link href="/legal/terms" className="hover:text-foreground transition-colors underline-offset-4 hover:underline">
                 Términos de uso
               </Link>
               <span className="hidden sm:inline">•</span>
-              <Link href="/privacy" className="hover:text-foreground transition-colors underline-offset-4 hover:underline">
+              <Link href="/legal/privacy" className="hover:text-foreground transition-colors underline-offset-4 hover:underline">
                 Política de privacidad
               </Link>
               <span className="hidden sm:inline">•</span>
-              <Link href="/cookies" className="hover:text-foreground transition-colors underline-offset-4 hover:underline">
+              <Link href="/legal/cookies" className="hover:text-foreground transition-colors underline-offset-4 hover:underline">
                 Cookies
               </Link>
             </div>

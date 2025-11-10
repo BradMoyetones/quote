@@ -13,13 +13,10 @@ import { Button } from "./ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Skeleton } from "./ui/skeleton"
 import { useRouter } from "next/navigation"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { cn } from "@/lib/utils"
 import { ChevronsUpDown } from "lucide-react"
 
 export default function UserDropdown({mode = "desktop"}:{mode?: "mobile" | "desktop"}) {
     const router = useRouter()
-    const isMobile = useIsMobile()
     
     const {
         data: session,
@@ -38,7 +35,7 @@ export default function UserDropdown({mode = "desktop"}:{mode?: "mobile" | "desk
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button 
-                    className={isMobile && mode === "mobile" ? "py-6" : "rounded-full p-0.5"}
+                    className={mode === "mobile" ? "py-6" : "rounded-full p-0.5"}
                     variant="ghost"
                 >
                     {isPending ? (
@@ -54,7 +51,7 @@ export default function UserDropdown({mode = "desktop"}:{mode?: "mobile" | "desk
                                 {session?.user.name?.slice(0, 2).toUpperCase()}
                             </AvatarFallback>
                         </Avatar>
-                        {isMobile && mode === "mobile" && (
+                        {mode === "mobile" && (
                             <>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
                                     <span className="truncate font-medium">{session?.user.name}</span>
@@ -107,8 +104,14 @@ export default function UserDropdown({mode = "desktop"}:{mode?: "mobile" | "desk
                     </div>
                 </DropdownMenuLabel>
 
+                <DropdownMenuItem
+                    onClick={() => router.push("/dashboard")}
+                >
+                    {isPending ? (
+                        <Skeleton className="h-4 w-24" />
+                    ) : ("Dashboard")}
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
-
                 <DropdownMenuItem
                     onClick={async () => {
                         await signOut({

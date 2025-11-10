@@ -33,8 +33,8 @@ export default function AuthPage() {
         }
     }
     return (
-        <div className="flex justify-center items-center min-h-screen">
-            <section className="flex min-h-screen bg-zinc-50 px-4 py-16 md:py-32 dark:bg-transparent">
+        <div className="flex justify-center items-center min-h-screen bg-muted/50">
+            <section className="flex min-h-screen bg-card px-4 py-16 md:py-32 shadow border-4 border-t-0 rounded-b-full">
                 <form
                     action=""
                     className="max-w-92 m-auto h-fit w-full"

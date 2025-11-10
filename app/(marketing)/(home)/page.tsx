@@ -1,6 +1,5 @@
 'use client'
 import { SiteFooter } from "@/components/site-footer";
-import { Header } from "./components/header-animated";
 import { FeaturesSection } from "./components/features-section";
 import { HowItWorksSection } from "./components/how-it-works-section";
 import { PreviewSection } from "./components/preview-section";
@@ -10,6 +9,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Hero } from "./components/hero-animated";
 import { motion } from 'motion/react';
+import { Header } from "@/components/site-header-animated";
 
 const CONTENT_VARIANTS = {
   hidden: {
@@ -35,7 +35,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={cn('relative h-dvh', !isLoaded && 'overflow-y-hidden')}>
+    <main className={cn('relative ', !isLoaded && 'overflow-y-hidden')}>
       <Header transition={transition} />
       {transition && (
         <>

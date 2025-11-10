@@ -1,50 +1,53 @@
 "use client"
 
 import { THEMES } from "@/lib/themes"
-import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { Button } from "./ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Check } from "lucide-react"
 
-// import { CopyCodeButton } from "./theme-customizer"
-
-export function ThemeSelector({ className }: React.ComponentProps<"div">) {
+export function ThemeSelector({ ...props }: React.ComponentProps<typeof Button>) {
   const { activeTheme, setActiveTheme } = useThemeConfig()
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
-      <Label htmlFor="theme-selector" className="sr-only">
-        Theme
-      </Label>
-      <Select value={activeTheme} onValueChange={setActiveTheme}>
-        <Button asChild variant={"outline"}>
-          <SelectTrigger
-            id="theme-selector"
-          >
-            <div className="font-medium bg-primary rounded-full h-4 w-4" />
-          </SelectTrigger>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button 
+          variant={"ghost"} 
+          size={"icon"}
+          {...props}
+        >
+          <div className="font-medium bg-primary rounded-full h-4 w-4" />
         </Button>
-        <SelectContent align="end">
-          {THEMES.map((theme) => (
-            <SelectItem
-              key={theme.name}
-              value={theme.name}
-              className="data-[state=checked]:opacity-50"
-            >
-              <div className="font-medium rounded-full h-4 w-4" style={{backgroundColor: `hsl(${theme.activeColor.dark})`}} />
-              {theme.label === "Neutral" ? "Default" : theme.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      {/* <CopyCodeButton variant="secondary" size="sm" /> */}
-    </div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Color</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        {THEMES.map((theme) => (
+          <DropdownMenuItem
+            key={theme.name}
+            onClick={() => setActiveTheme(theme.name)}
+            disabled={theme.name === activeTheme}
+            className="data-[state=checked]:opacity-50"
+          >
+            <div className="font-medium rounded-full h-4 w-4" style={{backgroundColor: `hsl(${theme.activeColor.dark})`}} />
+            {theme.label === "Neutral" ? "Default" : theme.label}
+            {theme.name === activeTheme && (
+              <DropdownMenuShortcut>
+                <Check />
+              </DropdownMenuShortcut>
+            )}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
