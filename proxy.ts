@@ -16,7 +16,7 @@ export async function proxy(request: NextRequest) {
 		return NextResponse.redirect(new URL("/", request.url));
 	}
 
-    console.log("Session", session);
+    // console.log("Session", session);
     
 
 	return NextResponse.next();

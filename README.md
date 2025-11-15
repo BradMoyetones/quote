@@ -27,6 +27,14 @@ https://app.formatocotizacion.com/es
 
 - https://www.heroui.com/
 
+## Store
+
+- https://jotai.org/
+
+## Print
+
+- https://pptr.dev/guides/pdf-generation
+
 ## Prisma Commands
 
 | Script | Comando | Descripción |
